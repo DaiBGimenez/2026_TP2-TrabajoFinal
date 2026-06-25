@@ -9,16 +9,21 @@ import {
 } from "../data/orderData.js";
 import { ObjectId } from "mongodb";
 import { findProductById } from "../data/productData.js";
+import { findUserById } from "../data/userData.js";
 
 export async function createOrderService(user, cart){
 
+
+    const fullUser = await findUserById(user._id);
     const order = {
 
         userId:new ObjectId(user._id),
 
         usuario:{
             nombre:user.name,
-            email:user.email
+            email:user.email,
+            telefono:fullUser.telefono,
+            direccion:fullUser.direccion
         },
 
         items:cart.items,

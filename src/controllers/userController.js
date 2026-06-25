@@ -59,8 +59,8 @@ export async function getUser(req, res) {
 
 export async function registerUserController(req, res){
     const {name, email, password, telefono, direccion} = req.body;
-    if(!name || !email || !password) {
-        return res.status(400).json({message: "Faltan campos obligatorios (name, email, password)"});
+    if(!name || !email || !password || !telefono || !direccion) {
+        return res.status(400).json({message: "Faltan campos obligatorios (name, email, password, telefono, direccion)"});
     }
 
     try {
