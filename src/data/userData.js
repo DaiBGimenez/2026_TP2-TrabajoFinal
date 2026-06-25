@@ -35,17 +35,13 @@ const newUser = {
     name,
     email, 
     password: hashedPassword,
-    role
+    role,
+    telefono,
+    direccion
 };
 
 
-if(telefono){
-    newUser.telefono = telefono;
-}
 
-if(direccion){
-    newUser.direccion = direccion;
-}
     console.log("Nuevo usuario registrado:", newUser);
     const result = await db.collection("users").insertOne(newUser);
     return result;
